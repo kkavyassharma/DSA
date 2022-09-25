@@ -1,24 +1,22 @@
-//complement of base 10 integer
+//231Power of two
 #include<iostream>
 using namespace std;
-int complement(int x){
-    int mask = 0, ans;
-    int m = x;
-    if(x == 0){
-        return 1;
+bool power(int x){
+    int ans = 1;
+    for(int i = 0; i<=30; i++){
+        if(x == ans){
+            return true;
+        }
+        if(ans<INT_MAX/2){
+            ans = ans*2;
+        }
     }
-    while(m!=0){
-        mask = (mask<<1)| 1;
-        m = m>>1;
-    }
-    ans = ((~x) & mask);
-    return ans;
+    return false;
 }
 int main(){
-int n, a;
+int n;
 cout<<"Enter a number: ";
 cin>>n;
-a = complement(n);
-cout<<"Complement of "<<n<<" is "<<a<<endl;
+cout<<power(n);
 return 0;
 }
